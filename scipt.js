@@ -1,7 +1,7 @@
 let weather = {
     apikey:"e3351dbb1f28b9c5f6efe2d0dce29eef",
     fetchWeather : function(city){
-        fetch("https://api.openweathermap.org/data/2.5/weather?q="
+        fetch("http://api.openweathermap.org/data/2.5/weather?q="
             + city 
             + "&units=metric&appid="
             + this.apikey
@@ -28,11 +28,16 @@ let weather = {
         this.fetchWeather(document.querySelector(".search-bar").value);
     }
 };
+var dt = new Date();
+document.getElementById("date-time").innerHTML = dt.toLocaleString();
+
+
 document
 .querySelector(".search button")
 .addEventListener("click", function(){
     weather.search();
 });
+
 document
 .querySelector(".search-bar").addEventListener("keyup",function(event){
     if(event.key == "Enter"){
